@@ -16,6 +16,10 @@
 			    	{% csrf_token %}
 			    	<button type="submit" class="card-link">Like Tweet</button>
 			    </form>
+			<form method='POST' action="{% url 'tweet:unlike_tweet' tweet.id %}">
+			    	{% csrf_token %}
+			    	<button type="submit" class="card-link">Unlike Tweet</button>
+			    </form>
 			    <p class="card-text"><small class="text-muted">{{ tweet.like }}</small></p>
 			    
 		  <div class="card-body">

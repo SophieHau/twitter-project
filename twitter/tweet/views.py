@@ -37,5 +37,9 @@ def like_tweet(request, tweet_id):
 		tweet.save()
 		return redirect('tweet:index')
 
-
-
+def unlike_tweet(request, tweet_id):
+	if request.method == 'POST':
+		tweet = Tweet.objects.get(pk=tweet_id)
+		tweet.like -= 1
+		tweet.save()
+		return redirect('tweet:index')
