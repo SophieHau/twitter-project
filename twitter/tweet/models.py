@@ -8,4 +8,4 @@ class Tweet(models.Model):
 	author = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	pub_date = models.DateTimeField('published on')
 
-
+	

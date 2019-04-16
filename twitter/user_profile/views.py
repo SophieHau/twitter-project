@@ -51,7 +51,7 @@ def signup_view(request):
         username = request.POST['username']
         password = request.POST['password']
         bio = request.POST['bio']
-        user = User(username=username, password=password)
+        user = User.objects.create_user(username=username, password=password)
         user.save()
         profile = Profile(user=user, bio=bio)
         profile.save()

@@ -6,6 +6,12 @@ from user_profile.models import Profile
 from .models import Tweet
 
 
+def index(request):
+	tweets = Tweet.objects.all()
+	return render(request, 'index.html', {
+			'tweets': tweets
+		})
+
 @login_required(login_url='/accounts/login/')
 def add_tweet(request, profile_id):
 	profile = Profile.objects.get(pk=profile_id)
