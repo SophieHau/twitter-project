@@ -29,3 +29,13 @@ def delete_tweet(request, profile_id, tweet_id):
 		tweet = Tweet.objects.filter(pk=tweet_id).delete()
 		return redirect('user_profile:show_profile', profile_id=profile_id)
 
+
+def like_tweet(request, tweet_id):
+	if request.method == 'POST':
+		tweet = Tweet.objects.get(pk=tweet_id)
+		tweet.like += 1
+		tweet.save()
+		return redirect('tweet:index')
+
+
+

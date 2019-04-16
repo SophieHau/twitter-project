@@ -12,6 +12,12 @@
 		    <p class="card-text"><small class="text-muted">{{ tweet.pub_date }}</small></p>
 		    <p class="card-text"><small class="text-muted">{{ tweet.author.user }}</small></p>
 		  </div>
+		  <form method='POST' action="{% url 'tweet:like_tweet' tweet.id %}">
+			    	{% csrf_token %}
+			    	<button type="submit" class="card-link">Like Tweet</button>
+			    </form>
+			    <p class="card-text"><small class="text-muted">{{ tweet.like }}</small></p>
+			    
 		  <div class="card-body">
 				<form method="POST" action="{% url 'comment:add_comment' tweet.id %}">
 					{% csrf_token %}
