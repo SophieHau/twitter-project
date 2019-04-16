@@ -1,0 +1,8 @@
+env/
+twitter/media/
+twitter/db.sqlite3
+twitter/tweet/__pycache__/
+twitter/tweet/migrations/
+twitter/twitter/__pycache__/
+twitter/user_profile/__pycache__/
+twitter/user_profile/migrations/

@@ -1,0 +1,25 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from user_profile.models import Profile
+from .models import Tweet
+
+
+@login_required(login_url='/accounts/login/')
+def add_tweet(request, profile_id):
+	profile = Profile.objects.get(pk=profile_id)
+	if request.method == 'POST':
+		text = request.POST['tweet']
+		author = profile
+		pub_date = timezone.now()
+		t = Tweet(text=text, author=author, pub_date=pub_date)
+		t.save()
+		return redirect('user_profile:show_profile', profile_id=profile.id)
+
+@login_required(login_url='/accounts/login/')
+def delete_tweet(request, profile_id, tweet_id):
+	if request.method == 'POST':
+		tweet = Tweet.objects.filter(pk=tweet_id).delete()
+		return redirect('user_profile:show_profile', profile_id=profile_id)
+
