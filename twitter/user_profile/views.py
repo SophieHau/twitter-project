@@ -24,7 +24,7 @@ def show_profile(request, profile_id):
 
     return render(request, 'profile.html', {
             'profile': user_profile,
-            'tweets': tweets
+            'tweets': tweets,
         })
 
 
